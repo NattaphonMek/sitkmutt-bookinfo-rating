@@ -22,5 +22,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: nattaphonmek/bookinfo-ratings:dev
+          tags: ghcr.io/nattaphonmek/bookinfo-ratings:dev
 
