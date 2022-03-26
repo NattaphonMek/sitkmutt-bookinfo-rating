@@ -19,7 +19,7 @@ spec:
       - name: {{ .Release.Name }}
         image: {{ .Values.ratings.image }}:{{ .Values.ratings.tag }}
         imagePullPolicy: Always
-                {{- if or (.Values.extraEnv) (.Values.extraEnvSecret) }}
+        {{- if or (.Values.extraEnv) (.Values.extraEnvSecret) }}
         env:
 
         {{- if .Values.extraEnv }}
@@ -42,6 +42,5 @@ spec:
         {{- end }}
 
         {{- end }}
-
       imagePullSecrets:
       - name: {{ .Values.ratings.imagePullSecrets }}

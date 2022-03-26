@@ -8,7 +8,7 @@ metadata:
     {{- end }}
   {{- end }}
   name: {{ .Release.Name }}
-  namespace: student8-bookinfo-dev
+  namespace: {{ .Values.ratings.namespace }}
 spec:
   rules:
   - host: {{ .Values.ingress.host }}

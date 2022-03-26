@@ -3,9 +3,9 @@ description: Bookinfo Ratings Service Helm Chart
 name: bookinfo-ratings
 version: 1.0.0
 appVersion: 1.0.0
-home: http://sitkmutt.bookinfo.dev.opsta.net/student8/ratings
+home: http://opsta.parfet.in.th/ratings
 maintainers:
-  - name: student8
+  - name: nattaphonmek
     email: nattaphon.mek@mail.kmutt.ac.th
 sources:
-  - https://github.com/nattaphonmek/sitkmutt-bookinfo-ratings
+  - https://github.com/NattaphonMek/opsta-bootcamp-bookinfo
