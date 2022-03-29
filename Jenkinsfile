@@ -65,7 +65,7 @@ pipeline {
             withKubeConfig([credentialId:'gke-kubeconfig']) {
               withCredentials([file(credentialId:'gke-sa-key-json', variable:'GOOGLE_APPLICATION_CREDENTIALS')]){
                 sh "helm upgrade -f k8s/helm-values/values-bookinfo-${ENV_NAME}-ratings.yaml --wait \
-                --set extraEnv.commit_ID=${scmVars.GIT_COMMIT}
+                --set extraEnv.commit_ID=${scmVars.GIT_COMMIT} \
                 --namespace bookinfo-${ENV_NAME} bookinfo-${ENV_NAME}-ratings k8s/helm"
               }// End withCredentials
             }// End withKubeConfig
