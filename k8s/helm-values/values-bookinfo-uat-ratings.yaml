@@ -19,4 +19,5 @@ extraEnv:
   COMMIT_SHA: CHANGEME
 extraEnvSecret:
   MONGO_DB_PASSWORD:
-    bookinfo-uat-ratings-mongodb-secret: mongodb-password
+  bookinfo-uat-ratings-mongodb-secret: mongodb-password
+  COMMIT_ID: CHANGEME
