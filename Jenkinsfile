@@ -5,26 +5,26 @@ pipeline {
   agent {
     kubernetes{
         yaml """
-          apiVersion: v1
-          kind: Pod
-          spec:
-						containers:
-						- name: docker
-							image: docker:20.10.3-dind
-							command:
-							- dockerd
-							- --host=unix:///var/run/docker.sock
-							- --host=tcp://0.0.0.0:2375
-							- --storage-driver=overlay2
-							ttv: true
-              securityContext:
-								priviledged: true
-            - name: helm
-              image: lachlanevenson/k8s-helm:v3.5.0
-              command:
-              - cat
-              tty: true
-				""" 
+apiVersion: v1
+kind: Pod
+spec:
+	containers:
+	- name: docker
+		image: docker:20.10.3-dind
+		command:
+		- dockerd
+		- --host=unix:///var/run/docker.sock
+		- --host=tcp://0.0.0.0:2375
+		- --storage-driver=overlay2
+		ttv: true
+    securityContext:
+			priviledged: true
+  - name: helm
+    image: lachlanevenson/k8s-helm:v3.5.0
+    command:
+    - cat
+    tty: true
+""" 
     } // End kubernetes
   } // End agent
 
