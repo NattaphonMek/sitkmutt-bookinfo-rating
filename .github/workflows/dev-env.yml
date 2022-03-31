@@ -34,19 +34,7 @@ jobs:
       - name: google auth
         uses: google-github-actions/auth@v0
         with:
-          creadentials_json: '{
-  "type": "service_account",
-  "project_id": "planar-ripsaw-342917",
-  "private_key_id": "dd61155e0bb8323316f5c1d49c4be1b54d2fbb24",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCch3FuiECt7KIg\ndG115QgwPVcZ1C4sQ+8Z8srkygoXtgvqMEWWFEDvytdSc3/fQRrIv9NxR206/rRh\nl96J7FzC64DQTOCKHFceH9TseIBRlq3UBDW6jfDTfBmzxATAx6xlkWQk0nhhdPWX\nBuo2Cjm22reXvN6CLDulF1uWLuhV8Jf3ZZVXchKi4+dKlkAoQvG6l/V3kFhSkJio\nft2LCVIMeNk+kNwEP4GYhADrnSde+F/EUJsd3Ya3ar95gUtijpcYZTOpERPBAP43\nzMfBA87MDKUU7IftpPuzn4vmCbhA3HLPk62NY4uElZ9aOzMFzsrc8qi6z500fbeh\nLaiNoUa7AgMBAAECggEAE42x5FUTVga7oWKZ8pfNTuViwOsUvNqG/w6pkiy7rQbv\nScPaStYLNJ6ks6aSVevL8kGlor7W938uPmDFNSU4g0WoaPJUPGcvlNJKJs4jeCMN\nYkZdBd8fCJ7glmh0EDcBTgt8X0MxiY8dnM5e1KhbWash3cvYtJnc9jx1kvcXdqCu\nG2h9pvbdbGdqSxX9FpqpkT/LP3C1KbI9cgLzrY0P79uXvNgLA1y2GpFxVN55KE2/\npBSapHt2c1ahdFRPKz+sX14GKP2X7QwoV/GZ4ID1d892rLz69g607GYyGejAm5az\nZ+Y6kdeAYHLgR1ddP2YLluAF9xtB+PSj3MplRb7JiQKBgQDcHfDXC1dzsKihiQXY\n/r8u2A2eChm5t7+wWTU4ZSxfegYjQ/qc5wQ9O4ePWFgoj7EmHp0ZKL/tzTCu3+/v\n0tpSGWBcWpvfNP/CnObczLGaazjz7O9cjRK0Hiwc1D2kUEoRLGiz9kPMsC70b98c\nqJzfR+yh8C2jAkjvMo8ZOJh/WQKBgQC2C9AXOtJcLUzEVf4c0MTCrIwREDqWwPvY\nxsRsyhLfX/z+NWwqzAsHg5ejb34dJ0uFc06+kjYevsJlmkdc9iIRwRZV6XLeK5j/\npb1x2piypw+URwucHSNh1Ndh3tOvsv34YrTSwvTrgAMFAdVmkrWM7mDivRtX053x\niHoA7OooMwKBgDfKcvfejQzqsuM2mr/UWdrishjjkH+tHi3xfnbL1gJhKFsZ6NSK\nDV4Dz6k6iCXHveveiI0O8g6xGmzIn8UWmXWDrxPZd3aMtWK7aByA2Wc9VBMnc8fu\njdYPa7jm5rTWEN/ndKZgffDMmyojjNZzukcxsL2e5cJSWvAdzX1kBesJAoGBAI++\nXB07kQa/rjIJRJE0N2kQHbkLe3e2AiZ1LHxKQwSmInoHbNWOL9dLDN08F/SlJnjF\nR5QqlxlHvu/DFj5NCzHBqQVFRDIxcqnKEQBpftDyINcQEha+20VQbpEVBUliqC8M\noYMZ9ZJOjhPSEtLfXQNe5pmigIiky73/6XX5nBsJAoGAE0nhDTA/ahhHrXJ3H5Eg\nSesrW8DpIO4+uBH3Il70VjdVM6PA0x+5923uiiACDw9U55OG/8qaG6eQREZabnAO\nJTn6LZmv0E8y6+FxgPH0gwYquAl2v2MtZme80ao7fqaRVddvONuE2XQn+iR4J1Tv\n6yVhhra5Lh8jy2zBocY+TX0=\n-----END PRIVATE KEY-----\n",
-  "client_email": "github-actions@planar-ripsaw-342917.iam.gserviceaccount.com",
-  "client_id": "107216627618433148264",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/github-actions%40planar-ripsaw-342917.iam.gserviceaccount.com"
-}
-'
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: get-credentials
         uses: google-github-actions/get-gke-credentials@main
