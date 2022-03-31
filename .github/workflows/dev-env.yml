@@ -89,10 +89,26 @@ jobs:
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
 
-      - name: OWASP ZAP scan
-        uses: zaproxy/action-baseline@v0.2.0
+      # - name: OWASP ZAP scan
+      #   uses: zaproxy/action-baseline@v0.2.0
+      #   with:
+      #     token: ${{ secrets.TOKEN }}
+      #     target: 'https://dev.parfet.in.th/ratings'
+
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
         with:
-          token: ${{ secrets.TOKEN }}
-          target: 'https://dev.parfet.in.th/ratings'
+          project: ${{ github.event.repository.name }}
+          path: '.'
+          format: 'HTML'    
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
 
 
