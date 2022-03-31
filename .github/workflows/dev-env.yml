@@ -43,8 +43,9 @@ jobs:
           location: asia-southeast2-c
 
       - name: deploy
-        uses: deliverybot/helm@v1
+        uses: deliverybot/helm@master
         with:
+          token: ${{ secrets.TOKEN }}
           helm: helm3
           release: bookinfo-dev-ratings
           namespace: bookinfo-dev
