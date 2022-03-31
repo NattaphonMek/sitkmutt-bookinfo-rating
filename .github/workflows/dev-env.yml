@@ -70,11 +70,11 @@ jobs:
       - name: Acceptance test 
         run: curl https://dev.parfet.in.th/ratings/health | grep "Ratings is good" 
 
-      # - name: SonarCloud Scan
-      #   uses: sonarsource/sonarcloud-github-action@master
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
       - name: Anchore Scan
         uses: anchore/scan-action@v3
@@ -84,7 +84,7 @@ jobs:
           fail-build: false
           acs-report-enable: true
       
-      - name: upload Anchore scan SARIF report
+      - name: Upload Anchore scan SARIF report
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
