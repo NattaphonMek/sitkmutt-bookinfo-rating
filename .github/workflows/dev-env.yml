@@ -24,38 +24,38 @@ jobs:
           push: true
           tags: ghcr.io/nattaphonmek/bookinfo-ratings:dev
     
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+  deploy:
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  #     - name: google auth
-  #       uses: google-github-actions/auth@v0
-  #       with:
-  #         creadentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      - name: google auth
+        uses: google-github-actions/auth@v0
+        with:
+          creadentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-  #     - name: get-credentials
-  #       uses: google-github-actions/get-gke-credentials@main
-  #       with:
-  #         cluster_name: opsta-bootcamp
-  #         location: asia-southeast2-c
+      - name: get-credentials
+        uses: google-github-actions/get-gke-credentials@main
+        with:
+          cluster_name: opsta-bootcamp
+          location: asia-southeast2-c
 
-  #     - name: deploy
-  #       uses: deliverybot/helm@v1
-  #       with:
-  #         helm: helm3
-  #         release: bookinfo-dev-ratings
-  #         namespace: bookinfo-dev
-  #         chart: k8s/helm
-  #         value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
-  #         values: |
-  #           {
-  #             "extraEnv": {
-  #               "COMMIT_SHA": "${{ github.sha }}"
-  #             }
-  #           }
+      - name: deploy
+        uses: deliverybot/helm@v1
+        with:
+          helm: helm3
+          release: bookinfo-dev-ratings
+          namespace: bookinfo-dev
+          chart: k8s/helm
+          value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
+          values: |
+            {
+              "extraEnv": {
+                "COMMIT_SHA": "${{ github.sha }}"
+              }
+            }
 
   # test:
   #   needs: deploy
