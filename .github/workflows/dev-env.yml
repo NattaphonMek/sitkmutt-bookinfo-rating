@@ -43,23 +43,23 @@ jobs:
           location: asia-southeast2-c
           credentials: ${{ secrets.GCP_CREDENTIALS }}
 
-      - name: deploy
-        uses: deliverybot/helm@master
-        with:
-          token: ${{ secrets.TOKEN }}
-          helm: helm3
-          release: bookinfo-dev-ratings
-          namespace: bookinfo-dev
-          chart: k8s/helm
-          value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
-          values: |
-            {
-              "extraEnv": {
-                "COMMIT_SHA": "${{ github.sha }}"
-              }
-            }
-        env:
-          KUBECONFIG_FILE: '${{ secrets.GCP_CREDENTIALS }}'
+      # - name: deploy
+      #   uses: deliverybot/helm@master
+      #   with:
+      #     token: ${{ secrets.TOKEN }}
+      #     helm: helm3
+      #     release: bookinfo-dev-ratings
+      #     namespace: bookinfo-dev
+      #     chart: k8s/helm
+      #     value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
+      #     values: |
+      #       {
+      #         "extraEnv": {
+      #           "COMMIT_SHA": "${{ github.sha }}"
+      #         }
+      #       }
+      #   env:
+      #     KUBECONFIG_FILE: '${{ secrets.GCP_CREDENTIALS }}'
 
   # test:
   #   needs: deploy
