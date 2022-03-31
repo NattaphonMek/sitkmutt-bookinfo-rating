@@ -81,6 +81,7 @@ jobs:
         id: scan
         with:
           image: "ghcr.io/nattaphonmek/bookinfo-ratings:dev"
+          fail-build: true
           acs-report-enable: true
       
       - name: upload Anchore scan SARIF report
