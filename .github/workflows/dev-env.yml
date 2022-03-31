@@ -77,7 +77,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
       - name: Anchore Scan
-        uses: anchore/scan-actions@v3
+        uses: anchore/scan-action@v3
         id: scan
         with:
           image: "ghcr.io/nattaphonmek/bookinfo-ratings:"
