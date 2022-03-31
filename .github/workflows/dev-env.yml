@@ -6,11 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-      
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,8 +34,7 @@ jobs:
       - name: google auth
         uses: google-github-actions/auth@v0
         with:
-          workload_identity_provider: 'projects/110005106711/locations/global/workloadIdentityPools/github-action/providers/github-actions'
-          service_account: '110005106711-compute@developer.gserviceaccount.com'
+          creadentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: get-credentials
         uses: google-github-actions/get-gke-credentials@main
