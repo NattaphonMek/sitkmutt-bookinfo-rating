@@ -31,16 +31,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: google auth
-        uses: google-github-actions/auth@v0
-        with:
-          creadentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      # - name: google auth
+      #   uses: google-github-actions/auth@v0
+      #   with:
+      #     creadentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: get-credentials
         uses: google-github-actions/get-gke-credentials@main
         with:
           cluster_name: opsta-bootcamp
           location: asia-southeast2-c
+          credentials: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: deploy
         uses: deliverybot/helm@master
