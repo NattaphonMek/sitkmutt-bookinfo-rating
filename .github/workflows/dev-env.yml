@@ -40,7 +40,9 @@ jobs:
         uses: google-github-actions/setup-gcloud@v0
 
       - name: Use Gcloud Cli  
-        run: gcloud info    
+        run: |
+          gcloud info  
+          gcloud auth list  
 
       # - name: Get-credentials
       #   uses: google-github-actions/get-gke-credentials@main
@@ -52,16 +54,16 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-      - name: Deploy
-        run: |
-          gcloud container clusters get-credentials opsta-bootcamp \
-            --zone asia-southeast2-c \ 
-            --project planar-ripsaw-342917
-          # helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
-          #   --set randocats.image.tag=$GITHUB_SHA \
-          #   --wait
-          # kubectl rollout status deployment/$DEPLOYMENT_NAME
-          # kubectl get services -o wide
+      # - name: Deploy
+      #   run: |
+      #     gcloud container clusters get-credentials opsta-bootcamp \
+      #       --zone asia-southeast2-c \ 
+      #       --project planar-ripsaw-342917
+      #     # helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
+      #     #   --set randocats.image.tag=$GITHUB_SHA \
+      #     #   --wait
+      #     # kubectl rollout status deployment/$DEPLOYMENT_NAME
+      #     # kubectl get services -o wide
       # - name: deploy
       #   uses: deliverybot/helm@v1.5.0
       #   with:
