@@ -46,7 +46,7 @@ jobs:
         uses: deliverybot/helm@v1.5.0
         with:
           token: ${{ secrets.TOKEN }}
-          helm: helm3
+          helm: helm
           release: bookinfo-dev-ratings
           namespace: bookinfo-dev
           chart: k8s/helm
