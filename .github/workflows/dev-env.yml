@@ -28,6 +28,10 @@ jobs:
     needs: build
     runs-on: ubuntu-20.04
     steps:
+      - name: Update Charts location
+        run: |
+          helm repo add stable https://charts.helm.sh/stable --force-update
+          
       - name: Checkout code
         uses: actions/checkout@v2
 
