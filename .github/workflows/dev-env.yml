@@ -31,34 +31,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: google auth
+      - name: Google auth
         uses: google-github-actions/auth@v0
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-      - name: get-credentials
+      - name: Get-credentials
         uses: google-github-actions/get-gke-credentials@main
         with:
           cluster_name: opsta-bootcamp
           location: asia-southeast2-c
 
-      # - name: deploy
-      #   uses: deliverybot/helm@master
-      #   with:
-      #     token: ${{ secrets.TOKEN }}
-      #     helm: helm3
-      #     release: bookinfo-dev-ratings
-      #     namespace: bookinfo-dev
-      #     chart: k8s/helm
-      #     value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
-      #     values: |
-      #       {
-      #         "extraEnv": {
-      #           "COMMIT_SHA": "${{ github.sha }}"
-      #         }
-      #       }
-      #   env:
-      #     KUBECONFIG_FILE: '${{ secrets.GCP_CREDENTIALS }}'
+      - name: deploy
+        uses: deliverybot/helm@v1.5.0
+        with:
+          token: ${{ secrets.TOKEN }}
+          helm: helm3
+          release: bookinfo-dev-ratings
+          namespace: bookinfo-dev
+          chart: k8s/helm
+          value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
+          values: |
+            {
+              "extraEnv": {
+                "COMMIT_SHA": "${{ github.sha }}"
+              }
+            }
+        env:
+          KUBECONFIG_FILE: '${{ secrets.GCP_CREDENTIALS }}'
 
   test:
     needs: deploy
