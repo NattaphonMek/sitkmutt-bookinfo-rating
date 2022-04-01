@@ -56,9 +56,7 @@ jobs:
 
       - name: Deploy
         run: |
-          gcloud container clusters get-credentials opsta-bootcamp \
-            --zone asia-southeast2-c \ 
-            --project planar-ripsaw-342917
+          gcloud container clusters get-credentials opsta-bootcamp --zone asia-southeast2-c --project planar-ripsaw-342917
           helm list
       #     # helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
       #     #   --set randocats.image.tag=$GITHUB_SHA \
