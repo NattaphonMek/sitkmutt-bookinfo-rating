@@ -20,4 +20,3 @@ extraEnv:
 extraEnvSecret:
   MONGO_DB_PASSWORD:
   bookinfo-prd-ratings-mongodb-secret: mongodb-password
-  COMMIT_SHA: CHANGEME

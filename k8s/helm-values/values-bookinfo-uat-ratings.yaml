@@ -20,4 +20,3 @@ extraEnv:
 extraEnvSecret:
   MONGO_DB_PASSWORD:
   bookinfo-uat-ratings-mongodb-secret: mongodb-password
-  COMMIT_SGA: CHANGEME
