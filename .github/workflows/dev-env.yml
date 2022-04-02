@@ -59,7 +59,7 @@ jobs:
           gcloud container clusters get-credentials opsta-bootcamp --zone asia-southeast2-c --project planar-ripsaw-342917
 
           helm upgrade -f k8s/helm-values/values-bookinfo-dev-ratings.yaml --wait \
-                --set extraEnv.COMMIT_SHA=${{github.sha}}
+                --set extraEnv.COMMIT_SHA=${{github.sha}} \
                 --namespace bookinfo-dev bookinfo-dev-ratings k8s/helm
 
       #     # helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
