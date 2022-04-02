@@ -30,7 +30,7 @@ spec:
         {{- end }}
 
         {{- if .Values.extraEnvSecret }}
-        {{- range $key, $value := .Values.extraEnvSecret }}
+        {{- range $key, $value := fromYaml .Values.extraEnvSecret }}
         {{- range $secretName, $secretValue := $value }}
         - name: {{ $key }}
           valueFrom:
