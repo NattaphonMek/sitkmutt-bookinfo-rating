@@ -39,12 +39,6 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
 
-      # - name: Get-credentials
-      #   uses: google-github-actions/get-gke-credentials@main
-      #   with:
-      #     cluster_name: opsta-bootcamp
-      #     location: asia-southeast2-c
-
       - name: Use Gcloud Cli  
         run: |
           gcloud info  
@@ -61,31 +55,6 @@ jobs:
           helm upgrade -f k8s/helm-values/values-bookinfo-dev-ratings.yaml --wait \
                 --set extraEnv.COMMIT_SHA=${{github.sha}} \
                 --namespace bookinfo-dev bookinfo-dev-ratings k8s/helm
-
-      #     # helm upgrade $GKE_PROJECT $GKE_PROJECT-cluster/ \
-      #     #   --set randocats.image.tag=$GITHUB_SHA \
-      #     #   --wait
-      #     # kubectl rollout status deployment/$DEPLOYMENT_NAME
-      #     # kubectl get services -o wide
-
-
-      # - name: deploy
-      #   uses: deliverybot/helm@v1.5.0
-      #   with:
-      #     token: ${{ secrets.TOKEN }}
-      #     helm: helm
-      #     release: bookinfo-dev-ratings
-      #     namespace: bookinfo-dev
-      #     chart: k8s/helm
-      #     value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
-      #     values: |
-      #       {
-      #         "extraEnv": {
-      #           "COMMIT_SHA": "${{ github.sha }}"
-      #         }
-      #       }
-      #   env:
-      #     KUBECONFIG_FILE: '${{ secrets.GCP_CREDENTIALS }}'
 
   test:
     needs: deploy
