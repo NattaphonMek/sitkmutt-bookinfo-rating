@@ -50,7 +50,7 @@ jobs:
 
       - name: Deploy
         run: |
-          gcloud container clusters get-credentials opsta-bootcamp --zone asia-southeast2-c --project planar-ripsaw-342917
+          gcloud container clusters get-credentials opsta-bootcamp --zone asia-southeast1-a --project trans-dynamics-346308
 
           helm upgrade -f k8s/helm-values/values-bookinfo-dev-ratings.yaml --wait \
                 --set extraEnv.COMMIT_SHA=${{github.sha}} \
