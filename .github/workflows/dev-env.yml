@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Acceptance test 
-        run: curl https://dev.parfet.in.th/ratings/health | grep "Ratings is good" 
+        run: curl https://dev.konmek.cloud/ratings/health | grep "Ratings is good" 
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
